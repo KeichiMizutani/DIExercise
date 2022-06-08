@@ -9,3 +9,4 @@
 - [UniRx - Reactive Extensions for Unity](https://assetstore.unity.com/packages/tools/integration/unirx-reactive-extensions-for-unity-17276)
 - [DOTween (HOTween v2)](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
 - [Joystick Pack](https://assetstore.unity.com/packages/tools/input-management/joystick-pack-107631?locale=ja-JP)
+- [Fungus](https://github.com/snozbot/fungus/releases/tag/v.3.13.8)
