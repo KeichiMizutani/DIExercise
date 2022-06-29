@@ -142,8 +142,17 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: -8591664804960243804, guid: 5fa859b2ffb38974d9eae550a1539b19, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 6434556799638697693, guid: f063c3db91866bb429b6438230985e3b, type: 2}
+  - {fileID: -8591664804960243804, guid: 5fa859b2ffb38974d9eae550a1539b19, type: 2}
   - {fileID: 4800000, guid: c9f956787b1d945e7b36e0516201fc76, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -157,7 +166,7 @@ PlayerSettings:
   enableOpenGLProfilerGPURecorders: 1
   useHDRDisplay: 0
   D3DHDRBitDepth: 0
-  m_ColorGamuts: 0000000003000000
+  m_ColorGamuts: 00000000
   targetPixelDensity: 30
   resolutionScalingMode: 0
   resetResolutionOnWindowResize: 0
@@ -428,7 +437,7 @@ PlayerSettings:
     m_APIs: 10000000
     m_Automatic: 1
   - m_BuildTarget: AndroidPlayer
-    m_APIs: 0b000000
+    m_APIs: 0b00000015000000
     m_Automatic: 0
   - m_BuildTarget: WebGLSupport
     m_APIs: 0b000000
@@ -446,7 +455,7 @@ PlayerSettings:
   - m_BuildTarget: Standalone
     m_EncodingQuality: 1
   - m_BuildTarget: Android
-    m_EncodingQuality: 1
+    m_EncodingQuality: 0
   - m_BuildTarget: iPhone
     m_EncodingQuality: 1
   - m_BuildTarget: tvOS
