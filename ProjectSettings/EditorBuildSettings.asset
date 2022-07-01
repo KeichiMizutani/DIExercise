@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
-  m_configObjects: {}
+    path: Assets/Scenes/MizutaniWin.unity
+    guid: d78729689f63a3544a7190c03d4bf0cd
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 11162af038b03f34494edd16e50bdb9c, type: 2}
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: dc66b8d2908916948b9f3e43b4cd63a5, type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 989d20ac22c0aea49908e72f41efe08a, type: 2}
+    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: f2df1d5ac73cebc4080eb6409fffa688, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5fa859b2ffb38974d9eae550a1539b19, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: f063c3db91866bb429b6438230985e3b, type: 2}
