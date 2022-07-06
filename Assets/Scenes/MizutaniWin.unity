@@ -867,11 +867,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8eb97651f2b475f4b83463dd5adbd91a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.82
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8eb97651f2b475f4b83463dd5adbd91a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.98
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8eb97651f2b475f4b83463dd5adbd91a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -903,7 +903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8eb97651f2b475f4b83463dd5adbd91a, type: 3}
       propertyPath: m_Name
-      value: Maguro
+      value: Maguro_normal
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 8eb97651f2b475f4b83463dd5adbd91a, type: 3}
       propertyPath: m_Controller
@@ -1272,11 +1272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 782bfd33171bd0145b2d0fb179206c41, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.347
+      value: -1.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 782bfd33171bd0145b2d0fb179206c41, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.172
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 782bfd33171bd0145b2d0fb179206c41, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1308,7 +1308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 782bfd33171bd0145b2d0fb179206c41, type: 3}
       propertyPath: m_Name
-      value: Suzuki
+      value: Suzuki_normal
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 782bfd33171bd0145b2d0fb179206c41, type: 3}
       propertyPath: m_Controller
@@ -1403,11 +1403,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94dac182f71772f42a58a84d8e21bd61, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.101
+      value: -0.79
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94dac182f71772f42a58a84d8e21bd61, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.27
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94dac182f71772f42a58a84d8e21bd61, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1439,7 +1439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 94dac182f71772f42a58a84d8e21bd61, type: 3}
       propertyPath: m_Name
-      value: Tai
+      value: Tai_normal
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 94dac182f71772f42a58a84d8e21bd61, type: 3}
       propertyPath: m_Controller
@@ -1476,11 +1476,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 668edb152eebb7c4788c181a05871601, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14
+      value: -1.81
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 668edb152eebb7c4788c181a05871601, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.543
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 668edb152eebb7c4788c181a05871601, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1512,7 +1512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 668edb152eebb7c4788c181a05871601, type: 3}
       propertyPath: m_Name
-      value: Aji
+      value: Aji_normal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 668edb152eebb7c4788c181a05871601, type: 3}
