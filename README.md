@@ -11,3 +11,4 @@ Unity2021.3.4f1
 - [DOTween (HOTween v2)](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
 - [Joystick Pack](https://assetstore.unity.com/packages/tools/input-management/joystick-pack-107631?locale=ja-JP)
 - [Fungus](https://github.com/snozbot/fungus/releases/tag/v.3.13.8)
+- [UnityChanToonShaderVer2_Project-urp-2.5.0](https://github.com/unity3d-jp/UnityChanToonShaderVer2_Project/releases)
