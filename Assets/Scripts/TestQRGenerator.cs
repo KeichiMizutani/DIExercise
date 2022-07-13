@@ -1,11 +1,11 @@
 using System;
-using System.Security.Cryptography;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
-
 using UnityEngine;
-//using ZXing;        //QRコード作成に必要
-//using ZXing.QrCode; //QRコード作成に必要
+using UnityEngine.UI;
+using ZXing;        //QRコード作成に必要
+using ZXing.QrCode; //QRコード作成に必要
 
 public class TestQRGenerator : MonoBehaviour
 {
@@ -15,7 +15,9 @@ public class TestQRGenerator : MonoBehaviour
     private string fishID = "jp_1_001";//"wakayama_aeonmal_your'sland";
 
     [SerializeField]private SpriteRenderer qrSprite;//最終的に表示するSpriteRendererオブジェクト
-    private Texture2D encodedQRTextire;//エンコードして出来たQRコードのTxture2Dが入る
+    private Texture2D encodedQrTexture2D;//エンコードして出来たQRコードのTxture2Dが入る
+
+    [SerializeField] private RawImage rawImageReceiver;
     
     private int qrTxtureW = 256;//作成するテクスチャサイズ
     private int qrTxtureH = 256;//作成するテクスチャサイズ
@@ -26,18 +28,20 @@ public class TestQRGenerator : MonoBehaviour
 
     private void Start()
     {
-        encodedQRTextire = new Texture2D(qrTxtureW, qrTxtureH);
+        encodedQrTexture2D = new Texture2D(qrTxtureW, qrTxtureH);
+        
+        CreateQRCode();
     }
 
     void Update()
     {
         timer += Time.deltaTime;
+        Debug.Log(timer);
         if (timer > 60.0f)
         {
             timer = 0.0f;
-            qrString = Encrypt(fishID);
-            //エンコード処理
-            //var color32 = Encode(ImageLink, EncodedQRTextire.width, EncodedQRTextire.height);
+            
+            CreateQRCode();
         }
         
         if (Input.GetKeyDown(KeyCode.Q))
@@ -48,6 +52,21 @@ public class TestQRGenerator : MonoBehaviour
             Debug.Log(encrypted + "を" + decrypted + "に変換しました");
             Debug.Log(DateTime.UtcNow);
         }
+    }
+
+    private void CreateQRCode()
+    {
+        encodedQrTexture2D = new Texture2D(qrTxtureW, qrTxtureH);　// 新規の空のテクスチャを作成
+        qrString = Encrypt(fishID); //  QRコードで表示する文字列を指定
+            
+        //エンコード処理
+        Color32[] color32 = Encode(qrString, encodedQrTexture2D.width, encodedQrTexture2D.height);
+        encodedQrTexture2D.SetPixels32(color32);
+            
+        //エンコードで取得した情報で変更を適用する
+        encodedQrTexture2D.Apply();
+
+        rawImageReceiver.texture = encodedQrTexture2D;
     }
 
     static string Encrypt(string textToEncrypt)
@@ -118,5 +137,23 @@ public class TestQRGenerator : MonoBehaviour
         {
             throw new Exception(ae.Message, ae.InnerException);
         }
+    }
+    
+    //32 ビット形式での RGBA の色の表現
+    //https://docs.unity3d.com/ja/2018.4/ScriptReference/Color32.html
+
+    //エンコード処理（ここはサンプル通り）
+    private static Color32[] Encode(string textForEncoding, int width, int height){
+        
+        var writer = new BarcodeWriter{
+            Format = BarcodeFormat.QR_CODE,
+            
+            Options = new QrCodeEncodingOptions{
+                Height = height,
+                Width = width
+            }
+        };
+        return writer.Write(textForEncoding);
+        
     }
 }
