@@ -18,6 +18,9 @@ public class AuthUIManager : SingletonMonoBehaviour<AuthUIManager>
     protected override void Awake()
     {
         base.Awake();
+        
+        ClearUI();
+        LoginScreen();
     }
 
     private void ClearUI()
