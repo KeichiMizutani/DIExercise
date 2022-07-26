@@ -85,5 +85,10 @@ crashlytics-build.properties
 *FungusExamples/
 *UnityChanToonShaderVer2_Project-urp-2.5.0/
 
+*Plugins
+
 # Firebase
 *google-services.json
+*google-services-desktop.json
+*ExternalDependencyManager/
+*Firebase/
