@@ -19,8 +19,8 @@ public class TestQRGenerator : MonoBehaviour
 
     [SerializeField] private RawImage rawImageReceiver;
     
-    private int qrTxtureW = 256;//作成するテクスチャサイズ
-    private int qrTxtureH = 256;//作成するテクスチャサイズ
+    private int qrTxtureW = 512;//作成するテクスチャサイズ
+    private int qrTxtureH = 512;//作成するテクスチャサイズ
 
     private string qrString;
     
