@@ -27,6 +27,9 @@ public class AuthUIManager : SingletonMonoBehaviour<AuthUIManager>
     {
         loginUI.SetActive(false);
         registerUI.SetActive(false);
+        verifyEmailUI.SetActive(false);
+        chekingForAccountUI.SetActive(false);
+        
         FirebaseManager.Instance.ClearOutputs();
     }
 

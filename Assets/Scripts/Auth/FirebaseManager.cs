@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +37,7 @@ public class FirebaseManager : SingletonMonoBehaviour<FirebaseManager>
         
         //DontDestroyOnLoad(this.gameObject);
 
+        /*
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(checkDependencyTask =>
         {
             var dependencyStatus = checkDependencyTask.Result;
@@ -50,15 +52,74 @@ public class FirebaseManager : SingletonMonoBehaviour<FirebaseManager>
                 Debug.LogError($"Could not resolve all Firebase dependence: {dependencyStatus}");
             }
         });
+        */
     }
 
+    private void Start()
+    {
+        StartCoroutine(CheckAndFixDependencies());
+    }
+
+    private IEnumerator CheckAndFixDependencies()
+    {
+        var checkAndFixDependenciesTask = FirebaseApp.CheckAndFixDependenciesAsync();
+
+        yield return new WaitUntil(predicate: () => checkAndFixDependenciesTask.IsCompleted);
+
+        var dependencyResult = checkAndFixDependenciesTask.Result;
+
+        if (dependencyResult == DependencyStatus.Available)
+        {
+            InitializeFirebase();
+        }
+        else
+        {
+            Debug.LogError($"Could not resolve all Firebase dependencies: {dependencyResult}");
+        }
+    }
+    
     private void InitializeFirebase()
     {
         auth = FirebaseAuth.DefaultInstance;
+        StartCoroutine(CheckAutoLogin());
 
         auth.StateChanged += AuthStateChanged;
         AuthStateChanged(this, null);
     }
+
+    private IEnumerator CheckAutoLogin()
+    {
+        yield return new WaitForEndOfFrame();
+
+        if (user != null)
+        {
+            var reloadUserTask = user.ReloadAsync();
+
+            yield return new WaitUntil(predicate: () => reloadUserTask.IsCompleted);
+            
+            AutoLogin();
+        }
+        else
+        {
+            AuthUIManager.Instance.LoginScreen();
+        }
+    }
+
+    private void AutoLogin()
+    {
+        if (user != null)
+        {
+            // TODO: Email Verification
+            
+            GameManager.Instance.ChangeScene("Lobby");
+        }
+        else
+        {
+            AuthUIManager.Instance.LoginScreen();
+        }
+    }
+
+    
 
     private void AuthStateChanged(object sender, System.EventArgs eventArgs)
     {
@@ -137,14 +198,14 @@ public class FirebaseManager : SingletonMonoBehaviour<FirebaseManager>
             {
                 yield return new WaitForSeconds(1f);
 
-                // GameManager.Instance.ChangeScene("lobby");
+                 GameManager.Instance.ChangeScene("Lobby");
             }
             else
             {
                 // TODO: Send Verification Email;
                 
                 // Temporary
-                // GameManager.Instance.ChangeScene("lobby");
+                 GameManager.Instance.ChangeScene("Lobby");
             }
         }
     }
