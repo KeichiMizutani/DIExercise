@@ -109,9 +109,14 @@ public class FirebaseManager : SingletonMonoBehaviour<FirebaseManager>
     {
         if (user != null)
         {
-            // TODO: Email Verification
-            
-            GameManager.Instance.ChangeScene("Lobby");
+            if (user.IsEmailVerified)
+            {
+                GameManager.Instance.ChangeScene("Lobby");
+            }
+            else
+            {
+                StartCoroutine(SendVerificationEmail());
+            }
         }
         else
         {
@@ -198,14 +203,11 @@ public class FirebaseManager : SingletonMonoBehaviour<FirebaseManager>
             {
                 yield return new WaitForSeconds(1f);
 
-                 GameManager.Instance.ChangeScene("Lobby");
+                GameManager.Instance.ChangeScene("Lobby");
             }
             else
             {
-                // TODO: Send Verification Email;
-                
-                // Temporary
-                 GameManager.Instance.ChangeScene("Lobby");
+                StartCoroutine(SendVerificationEmail());
             }
         }
     }
@@ -289,10 +291,48 @@ public class FirebaseManager : SingletonMonoBehaviour<FirebaseManager>
                 }
                 else
                 {
-                    Debug.Log($"Firebase User Created Successfuly: {user.DisplayName} ({user.UserId})");
+                    Debug.Log($"Firebase User Created Successfully: {user.DisplayName} ({user.UserId})");
                     
-                    // TODO: Send Verification Email
+                    StartCoroutine(SendVerificationEmail());
                 }
+            }
+        }
+    }
+
+    private IEnumerator SendVerificationEmail()
+    {
+        if (user != null)
+        {
+            var emailTask = user.SendEmailVerificationAsync();
+
+            yield return new WaitUntil(predicate: () => emailTask.IsCompleted);
+
+            if (emailTask.Exception != null)
+            {
+                FirebaseException firebaseException = (FirebaseException) emailTask.Exception.GetBaseException();
+                AuthError error = (AuthError) firebaseException.ErrorCode;
+                
+                string output = "Unknown Error, Please Try Again";
+
+                switch (error)
+                {
+                    case AuthError.Cancelled:
+                        output = "Verification Task was Canceled";
+                        break;
+                    case AuthError.InvalidRecipientEmail:
+                        output = "Invalid Email";
+                        break;
+                    case AuthError.TooManyRequests:
+                        output = "Too Many Requests";
+                        break;
+                }
+
+                AuthUIManager.Instance.AwaitVerification(false, user.Email, output);
+            }
+            else
+            {
+                AuthUIManager.Instance.AwaitVerification(true, user.Email, null);
+                Debug.Log("Email Sent Successfully");
             }
         }
     }

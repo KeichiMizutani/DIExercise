@@ -44,4 +44,19 @@ public class AuthUIManager : SingletonMonoBehaviour<AuthUIManager>
         ClearUI();
         registerUI.SetActive(true);
     }
+
+    public void AwaitVerification(bool emailSent, string email, string output)
+    {
+        ClearUI();
+        verifyEmailUI.SetActive(true);
+
+        if (emailSent)
+        {
+            verifyEmailText.text = $"Sent Email!\nPlease Verify {email}";
+        }
+        else
+        {
+            verifyEmailText.text = $"Email Not Sent: {output}\nPlease Verify {email}";
+        }
+    }
 }
