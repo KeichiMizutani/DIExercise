@@ -35,24 +35,7 @@ public class FirebaseManager : SingletonMonoBehaviour<FirebaseManager>
     {
         base.Awake();
         
-        //DontDestroyOnLoad(this.gameObject);
-
-        /*
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(checkDependencyTask =>
-        {
-            var dependencyStatus = checkDependencyTask.Result;
-
-            if (dependencyStatus == DependencyStatus.Available)
-            {
-                InitializeFirebase();
-                ClearOutputs();
-            }
-            else
-            {
-                Debug.LogError($"Could not resolve all Firebase dependence: {dependencyStatus}");
-            }
-        });
-        */
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
@@ -261,8 +244,9 @@ public class FirebaseManager : SingletonMonoBehaviour<FirebaseManager>
                 UserProfile profile = new UserProfile
                 {
                     DisplayName = username,
-
-                    // TODO: Give Profile Default Photo
+                    
+                    
+                    PhotoUrl = new System.Uri("https://pbs.twimg.com/media/EFKdt0bWsAIfcj9.jpg"), // Twitter
                 };
 
                 var defaultUserTask = user.UpdateUserProfileAsync(profile);
@@ -334,6 +318,49 @@ public class FirebaseManager : SingletonMonoBehaviour<FirebaseManager>
                 AuthUIManager.Instance.AwaitVerification(true, user.Email, null);
                 Debug.Log("Email Sent Successfully");
             }
+        }
+    }
+
+    public void UpdateProfilePicture(string newProfilePictureURL)
+    {
+        StartCoroutine(UpdateProfilePictureLogic(newProfilePictureURL));
+    }
+
+    private IEnumerator UpdateProfilePictureLogic(string newProfilePictureURL)
+    {
+        if (user != null)
+        {
+            UserProfile profile = new UserProfile();
+
+            try
+            {
+                UserProfile _profile = new UserProfile
+                {
+                    PhotoUrl = new System.Uri(newProfilePictureURL),
+                };
+
+                profile = _profile;
+            }
+            catch
+            {
+                LobbyManager.Instance.Output("Error Fetching Image, Make Sure Your Link Is Valid!");
+                yield break;
+            }
+
+            var profilePhotoTask = user.UpdateUserProfileAsync(profile);
+            yield return new WaitUntil(predicate: (() => profilePhotoTask.IsCompleted));
+
+            if (profilePhotoTask.Exception != null)
+            {
+                Debug.LogError($"Updating Profile was unsuccessful: {profilePhotoTask.Exception}");
+            }
+            else
+            {
+                
+                LobbyManager.Instance.ChangePfpSuccess();
+                Debug.Log("Profile Image Updated Successfully");
+            }
+
         }
     }
 }
