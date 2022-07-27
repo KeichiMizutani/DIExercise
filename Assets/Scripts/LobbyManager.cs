@@ -9,64 +9,45 @@ using UnityEngine.UI;
 public class LobbyManager : SingletonMonoBehaviour<LobbyManager>
 {
     [Header("UI References")]
-    [SerializeField]
-    private GameObject profileUI;
-    [SerializeField]
-    private GameObject changePfpUI;
-    [SerializeField]
-    private GameObject changeEmailUI;
-    [SerializeField]
-    private GameObject changePasswordUI;
-    [SerializeField]
-    private GameObject reverifyUI;
-    [SerializeField]
-    private GameObject resetPasswordConfirmUI;
-    [SerializeField]
-    private GameObject actionSuccessPanelUI;
-    [SerializeField]
-    private GameObject deleteUserConfirmUI;
+    [SerializeField] private GameObject settingUI;
+    [SerializeField] private GameObject profileUI;
+    [SerializeField] private GameObject changePfpUI;
+    [SerializeField] private GameObject changeEmailUI;
+    [SerializeField] private GameObject changePasswordUI;
+    [SerializeField] private GameObject reverifyUI;
+    [SerializeField] private GameObject resetPasswordConfirmUI;
+    [SerializeField] private GameObject actionSuccessPanelUI;
+    [SerializeField] private GameObject deleteUserConfirmUI;
     [Space(5f)]
  
     [Header("Basic Info References")]
-    [SerializeField]
-    private TMP_Text usernameText;
-    [SerializeField]
-    private TMP_Text emailText;
-    [SerializeField]
-    private string token;
+    [SerializeField] private TMP_Text usernameText;
+    [SerializeField] private TMP_Text emailText;
+    [SerializeField] private string token;
     [Space(5f)]
  
     [Header("Profile Picture References")]
-    [SerializeField]
-    private Image profilePicture;
-    [SerializeField]
-    private TMP_InputField profilePictureLink;
-    [SerializeField]
-    private TMP_Text outputText;
+    [SerializeField] private Image profilePicture;
+    [SerializeField] private TMP_InputField profilePictureLink;
+    [SerializeField] private TMP_Text outputText;
     [Space(5f)]
  
     [Header("Change Email References")]
-    [SerializeField]
-    private TMP_InputField changeEmailEmailInputField;
+    [SerializeField] private TMP_InputField changeEmailEmailInputField;
     [Space(5f)]
  
     [Header("Change Password References")]
-    [SerializeField]
-    private TMP_InputField changePasswordInputField;
-    [SerializeField]
-    private TMP_InputField changePasswordConfirmInputField;
+    [SerializeField] private TMP_InputField changePasswordInputField;
+    [SerializeField] private TMP_InputField changePasswordConfirmInputField;
     [Space(5f)]
  
     [Header("Reverify References")]
-    [SerializeField]
-    private TMP_InputField reverifyEmailInputField;
-    [SerializeField]
-    private TMP_InputField reverifyPasswordInputField;
+    [SerializeField] private TMP_InputField reverifyEmailInputField;
+    [SerializeField] private TMP_InputField reverifyPasswordInputField;
     [Space(5)]
  
     [Header("Action Success Panel References")]
-    [SerializeField]
-    private TMP_Text actionSuccessText;
+    [SerializeField] private TMP_Text actionSuccessText;
     
     protected override void Awake()
     {
@@ -129,10 +110,25 @@ public class LobbyManager : SingletonMonoBehaviour<LobbyManager>
     public void ClearUI()
     {
         outputText.text = "";
+        //settingUI.SetActive(false);
         profileUI.SetActive(false);
         changePfpUI.SetActive(false);
         
         actionSuccessPanelUI.SetActive(false);
+    }
+
+    public void SettingUI()
+    {
+        ClearUI();
+        settingUI.SetActive(true);
+        profileUI.SetActive(true);
+        LoadProfile();
+    }
+
+    public void MainUI()
+    {
+        ClearUI();
+        settingUI.SetActive(false);
     }
 
     public void ProfileUI()
@@ -146,6 +142,7 @@ public class LobbyManager : SingletonMonoBehaviour<LobbyManager>
     {
         ClearUI();
         changePfpUI.SetActive(true);
+        Debug.Log("ChangePfpUI()");
     }
 
     public void ChangePfpSuccess()
