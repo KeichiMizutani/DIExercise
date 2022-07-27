@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/Title.unity
+    guid: 088e867596f38b84aa36bac8a8a84cf3
+  - enabled: 1
+    path: Assets/Scenes/AR_Camera.unity
+    guid: 97ec6171af9601548bea56af66861905
+  - enabled: 1
+    path: Assets/Scenes/QR_Camera.unity
+    guid: 19af5e9280177ab44bac9d4067524ef8
+  - enabled: 1
+    path: Assets/Scenes/Fish_Info.unity
+    guid: 35df6263b7a51944e8348be2b2c1e23c
+  - enabled: 1
+    path: Assets/Scenes/Stamp.unity
+    guid: e50b6357bb7849542b77eb1c4269f03f
   m_configObjects: {}
