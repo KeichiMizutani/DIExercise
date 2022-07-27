@@ -40,6 +40,6 @@ public abstract class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBe
 
         // なんとかManager的なSceneを跨いでこのGameObjectを有効にしたい場合は
         // ↓コメントアウト外してください.
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 }
