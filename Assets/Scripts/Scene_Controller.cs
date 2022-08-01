@@ -6,24 +6,23 @@ using UnityEngine.SceneManagement;
 
 public class Scene_Controller : MonoBehaviour
 {
-    public GameObject fadeCanvas;//‘€ì‚·‚éCanvasAƒ^ƒO‚Å’T‚·
+    public GameObject fadeCanvas;//ï¿½ï¿½ï¿½ì‚·ï¿½ï¿½Canvasï¿½Aï¿½^ï¿½Oï¿½Å’Tï¿½ï¿½
 
     void Start()
     {
-        //È—ª
-        Invoke("findFadeObject", 0.02f);//‹N“®—p‚ÉCanvas‚Ì¢Š«‚ğ‚¿‚å‚Á‚Æ‘Ò‚Â
+        Invoke("findFadeObject", 0.02f);//ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½Canvasï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‘Ò‚ï¿½
     }
 
     void findFadeObject()
     {
-        fadeCanvas = GameObject.FindGameObjectWithTag("Fade");//Canvas‚ğ‚İ‚Â‚¯‚é
-        fadeCanvas.GetComponent<Fade_Manager>().fadeIn();//ƒtƒF[ƒhƒCƒ“ƒtƒ‰ƒO‚ğ—§‚Ä‚é
+        fadeCanvas = GameObject.FindGameObjectWithTag("Fade");//Canvasï¿½ï¿½ï¿½İ‚Â‚ï¿½ï¿½ï¿½
+        fadeCanvas.GetComponent<Fade_Manager>().fadeIn();//ï¿½tï¿½Fï¿½[ï¿½hï¿½Cï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½ğ—§‚Ä‚ï¿½
     }
 
-    public async void sceneChange(string sceneName)//ƒ{ƒ^ƒ“‘€ì‚È‚Ç‚ÅŒÄ‚Ño‚·
+    public async void sceneChange(string sceneName)//ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚Ç‚ÅŒÄ‚Ñoï¿½ï¿½
     {
-        fadeCanvas.GetComponent<Fade_Manager>().fadeOut();//ƒtƒF[ƒhƒAƒEƒgƒtƒ‰ƒO‚ğ—§‚Ä‚é
-        await Task.Delay(200);//ˆÃ“]‚·‚é‚Ü‚Å‘Ò‚Â
-        SceneManager.LoadScene(sceneName);//ƒV[ƒ“ƒ`ƒFƒ“ƒW
+        fadeCanvas.GetComponent<Fade_Manager>().fadeOut();//ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½tï¿½ï¿½ï¿½Oï¿½ğ—§‚Ä‚ï¿½
+        await Task.Delay(200);//ï¿½Ã“]ï¿½ï¿½ï¿½ï¿½Ü‚Å‘Ò‚ï¿½
+        SceneManager.LoadScene(sceneName);//ï¿½Vï¿½[ï¿½ï¿½ï¿½`ï¿½Fï¿½ï¿½ï¿½W
     }
 }
