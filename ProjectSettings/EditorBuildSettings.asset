@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Use/QR.unity
     guid: 14c541143dd0ec0498fd47c0c2026b6e
+  - enabled: 0
+    path: Assets/Scenes/Use/QRSystemWin.unity
+    guid: d5979ab656ab02a4e96b8beae84916f2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 11162af038b03f34494edd16e50bdb9c, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: dc66b8d2908916948b9f3e43b4cd63a5, type: 2}
