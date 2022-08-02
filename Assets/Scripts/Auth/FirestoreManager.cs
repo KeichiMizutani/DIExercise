@@ -10,13 +10,13 @@ public class FirestoreManager : SingletonMonoBehaviour<FirestoreManager>
     private FirebaseFirestore db;
     private Dictionary<string, object> character;
 
-    public List<CharacterData> characterDataList = new List<CharacterData>();
+    public List<CharacterData> collectedDataList = new List<CharacterData>();
     
     protected override void Awake()
     {
         base.Awake();
 
-        
+        DontDestroyOnLoad(this);
         
     }
 
@@ -25,19 +25,12 @@ public class FirestoreManager : SingletonMonoBehaviour<FirestoreManager>
         db = FirebaseFirestore.DefaultInstance;
     }
 
-    public void TestGetDataButton()
-    {
-        EarnNewCharacter("wakayama_maguro");
-    }
+    
 
 
     public void EarnNewCharacter(string documentName)
     {
         GetCharacterInfoLogic(documentName);
-        //CharacterData cData = GetCharacterInfoLogic(documentName);
-        //characterDataList.Add(cData);
-        
-        //SaveUserCollection(uid,cData);
     }
 
     private void GetCharacterInfoLogic(string documentName)
@@ -67,15 +60,6 @@ public class FirestoreManager : SingletonMonoBehaviour<FirestoreManager>
         });
     }
     
-    
-/*
-    private IEnumerator GetCharacterInfoLogic(string documentName)
-    {
-        var getInfoTask = db.Collection("characters").Document(documentName).GetSnapshotAsync();
-
-        yield return new WaitUntil(predicate: () => getInfoTask.IsCompleted);
-    }
-    */
     
     private async void SaveUserCollection(string uid, CharacterData characterData)
     {

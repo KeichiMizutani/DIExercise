@@ -7,12 +7,12 @@ using UnityEngine.UI;
 using ZXing;        //QRコード作成に必要
 using ZXing.QrCode; //QRコード作成に必要
 
-public class TestQRGenerator : MonoBehaviour
+public class QRGenerator : MonoBehaviour
 {
-    private const string PublickeyFormat = "MMddHHmm";
-    private const string SecretkeyFormat = "HHmm";
-    private const string SecretkyHead = "mitt";
-    private string fishID = "jp_1_001";//"wakayama_aeonmal_your'sland";
+    public static readonly string PublickeyFormat = "MMddHHmm";
+    public static readonly string SecretkeyFormat = "HHmm";
+    public static readonly string SecretkyHead = "mitt";
+    [SerializeField] private string fishID;// = "p_wakayama_maguro";//"wakayama_aeonmal_your'sland";
 
     [SerializeField]private SpriteRenderer qrSprite;//最終的に表示するSpriteRendererオブジェクト
     private Texture2D encodedQrTexture2D;//エンコードして出来たQRコードのTxture2Dが入る
@@ -36,12 +36,13 @@ public class TestQRGenerator : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        Debug.Log(timer);
-        if (timer > 60.0f)
+        
+        if (timer > 1.0f)
         {
             timer = 0.0f;
             
             CreateQRCode();
+            //Debug.Log("QR更新");
         }
         
         if (Input.GetKeyDown(KeyCode.Q))
@@ -104,7 +105,7 @@ public class TestQRGenerator : MonoBehaviour
         }
     }
 
-    static string Decrypt(string textToDecrypt)
+    public static string Decrypt(string textToDecrypt)
     {
         try
         {
